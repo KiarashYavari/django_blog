@@ -22,7 +22,7 @@ class Article(models.Model):
     )
     
     Title = models.CharField(max_length=200, verbose_name="عنوان")
-    Category = models.ManyToManyField(Categories, verbose_name="دسته بندی")
+    Category = models.ManyToManyField(Categories, verbose_name="دسته بندی", related_name= 'articles')
     Description = models.TextField(verbose_name="شرح")
     Slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس مخصوص مقاله")
     Thumbnail = models.ImageField(upload_to="images", verbose_name="تصویر مقاله")
@@ -44,4 +44,6 @@ class Article(models.Model):
         return persian_calender_datetime(self.Published)
     publish_time.short_description = "زمان انتشار"
     
+    def enabled_categories(self):
+        return self.Category.filter(Status=True)
     

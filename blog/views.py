@@ -6,7 +6,6 @@ from blog.models import Article, Categories
 def home(request):
     context = {
         "articles": Article.objects.filter(Status = 'p'),
-        "categories": Categories.objects.filter(Status = True),
     }
     return render(request, 'home.html', context)
 
@@ -17,5 +16,10 @@ def article_exclusive(request, Slug):
     }
     return render(request, 'article_exclusive.html', context)
 
-    
+
+def category(request, Slug):
+    context ={
+        'category': get_object_or_404(Categories, Slug = Slug, Status = True)
+    }
+    return render(request, 'category.html', context)
     
