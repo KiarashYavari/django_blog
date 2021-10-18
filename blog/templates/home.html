@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}کیارش یاوری{% endblock %}
+<!-- Page Header-->
+{% block header %}
+ <header class="masthead" style="background-image: url('{% static 'assets/img/home-bg.jpg' %}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>خوش آمدید</h1>
+                            <span class="subheading"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ </header>
+ {% endblock%}
+{% block main_content%}
+ <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% for article in articles %} 
+                        <!-- Post preview-->
+                        <div class="post-preview">
+                            <a href="{% url 'blog:article_exclusive' article.Slug %}">
+                                <h2 class="post-title">{{article.Title}}</h2>
+                                <h3 class="post-subtitle">{{article.Description|truncatewords:30}}</h3>
+                            </a>
+                            <p class="post-meta">
+                                نوشته شده توسط
+                                <a href="#!">کیارش یاوری</a>
+                                {{article.publish_time}}
+                                <p class="post-meta">
+                                {% for cat in article.Category.all %}
+                                <a href="#!">#{{cat.Title}}</a>
+                                {% endfor%}
+                            </p>
+                            <!-- Divider-->
+                            <hr class="my-4" />
+                    {% endfor %}
+                     <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">پست های قدیمی تر →</a></div>
+                </div>
+            </div>
+    </div>
+        {% endblock %}
