@@ -22,7 +22,7 @@ class ArticleAdmin(admin.ModelAdmin):
     ordering = ('-Status', '-Published')
     
     def Category_str(self,cat_obj):
-        return "، ".join([Category.Title for Category in cat_obj.Category.all()])
+        return "، ".join([Category.Title for Category in cat_obj.enabled_categories()])
     Category_str.short_description = "دسته بندی ها"
     
         

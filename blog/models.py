@@ -2,6 +2,12 @@ from django.db import models
 from django.utils import timezone
 from extensions.persian_datetime import persian_calender_datetime
 
+
+# published article manager:
+class ArticleManager(models.Manager):
+    def published(self):
+        return self.filter(Status='p')
+
 class Categories(models.Model):
     Title = models.CharField(max_length=200, verbose_name="عنوان دسته بندی")
     Slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس مخصوص دسته بندی")
@@ -31,6 +37,7 @@ class Article(models.Model):
     Updated = models.DateTimeField(auto_now=True, verbose_name="آخرین بروز رسانی در")
     Status = models.CharField(max_length= 1, choices=STATUS_CHOICES, verbose_name="وضعیت انتشار")
     
+    objects = ArticleManager() # change the default manager to custom one
     class Meta:
         verbose_name = "مقاله"
         verbose_name_plural = "مقالات"
