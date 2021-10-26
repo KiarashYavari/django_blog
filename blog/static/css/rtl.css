@@ -23,4 +23,25 @@ header.masthead{
 
 }
 
+header.masthead .page-heading h1, header.masthead .page-heading .h1,
+header.masthead .site-heading h1,
+header.masthead .site-heading .h1 {
+    font-size: 3rem;
+}
+
+.post-preview > a > .post-title {
+    font-size: 1.7rem;
+}
+
+@media (min-width: 1200px) {
+    h3, .h3 {
+      font-size: 1.2rem;
+    }
+}
+
+.justify-content-center {
+    justify-content: center !important;
+    text-align: justify;
+}
+
 
