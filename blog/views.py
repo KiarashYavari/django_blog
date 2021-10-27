@@ -21,9 +21,14 @@ def article_exclusive(request, Slug):
     return render(request, 'article_exclusive.html', context)
 
 
-def category(request, Slug):
+def category(request, Slug, page=1):
+    category_list = get_object_or_404(Categories, Slug = Slug, Status = True)
+    article_list = category_list.articles.published()
+    paginator = Paginator(article_list, 5)
+
     context ={
-        'category': get_object_or_404(Categories, Slug = Slug, Status = True)
+        'category': category_list,
+        'articles': paginator.get_page(page),
     }
     return render(request, 'category.html', context)
     

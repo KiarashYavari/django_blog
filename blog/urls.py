@@ -9,4 +9,5 @@ urlpatterns = [
     path('page/<int:page>',home, name="home"),
     path('articles/<slug:Slug>',article_exclusive, name="article_exclusive"),
     path('category/<slug:Slug>',category, name="category"),
+    path('category/<slug:Slug>/page/<int:page>',category, name="category"),
 ]

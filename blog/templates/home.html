@@ -43,10 +43,10 @@
                      <!-- Pager-->
                     <div class="clearfix pager-button mb-4">
                         {% if articles.has_previous %}
-                            <a class="btn btn-primary text-uppercase ml-3" href="{% url 'blog:home' articles.previous_page_number %}">پست های جدیدتر &rarr;</a>
+                            <a class="btn btn-primary text-uppercase ml-3" href="{% url 'blog:home' articles.previous_page_number %}">پست های جدیدتر &larr;</a>
                         {% endif %}
                         {% if articles.has_next %}
-                        <a class="btn btn-primary text-uppercase" href="{% url 'blog:home' articles.next_page_number %}">پست های قدیمی تر &larr;</a>
+                        <a class="btn btn-primary text-uppercase" href="{% url 'blog:home' articles.next_page_number %}">پست های قدیمی تر &rarr;</a>
                         {% endif %}
                     </div>
                 </div>
