@@ -4,10 +4,11 @@
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">درباره ما</a></li>
         {% for cat in categories %}
         {% if cat.Parent == None %}
-            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:category' cat.Slug %}">{{cat.Title}}</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:category' cat.Slug %}">{{cat.Title}}</a>
             {% if cat.children.all %}
                 {% include "partials/category_parent_children.html" %}
             {% endif %}
+        </li>
         {% endif %}
         {% endfor%}
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">تماس با ما</a></li>
