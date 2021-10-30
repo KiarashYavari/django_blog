@@ -13,10 +13,11 @@ class Categories(models.Model):
     Slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس مخصوص دسته بندی")
     Position = models.IntegerField(verbose_name="جایگاه")
     Status = models.BooleanField(default=1, verbose_name="آیا منتشر شود؟")
+    Parent = models.ForeignKey('self', default=None, null=True, blank = True, on_delete=models.SET_NULL, related_name='children', verbose_name='زیر دسته')
     class Meta:
         verbose_name = "دسته بندی"
         verbose_name_plural = "دسته بندی ها"
-        ordering = ["Position"]
+        ordering = ["Parent__id","Position"]
     def __str__(self):
         return self.Title
     

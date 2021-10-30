@@ -4,7 +4,7 @@ from blog.models import Article, Categories
 
 # Register your models here.
 class CategoriesAdmin(admin.ModelAdmin):
-    list_display = ('Position','Title', 'Slug','Status')
+    list_display = ('Position','Title', 'Slug', 'Parent','Status')
     list_filter = (['Status'])
     search_fields = ('Title', 'Slug')
     prepopulated_fields = {"Slug": ("Title",)}
