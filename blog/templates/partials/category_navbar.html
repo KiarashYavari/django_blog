@@ -1,16 +1,17 @@
-<div class="collapse navbar-collapse" id="navbarResponsive">
-    <ul class="navbar-nav ms-auto py-4 py-lg-0">
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:home' %}">خانه</a></li>
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">درباره ما</a></li>
+<div class="collapse navbar-collapse container" id="navbarResponsive">
+    <ul class="navbar-nav ms-auto py-4 py-lg-0 nav-xbootstrap">
+        <li class="nav-item glyphicon glyphicon-chevron-down iconsize"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:home' %}">خانه</a></li>
+        <li class="nav-item glyphicon glyphicon-chevron-down iconsize"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">درباره ما</a></li>
         {% for cat in categories %}
         {% if cat.Parent == None %}
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:category' cat.Slug %}">{{cat.Title}}</a>
+        <li class="nav-item glyphicon glyphicon-chevron-down iconsize"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:category' cat.Slug %}">{{cat.Title}}</a>
             {% if cat.children.all %}
                 {% include "partials/category_parent_children.html" %}
             {% endif %}
         </li>
         {% endif %}
         {% endfor%}
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">تماس با ما</a></li>
+        <li class="nav-item glyphicon glyphicon-chevron-down iconsize"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">تماس با ما</a></li>
     </ul>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
