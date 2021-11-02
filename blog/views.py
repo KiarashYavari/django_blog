@@ -1,17 +1,23 @@
-from django.core import paginator
+from django.views.generic import ListView
 from django.core.paginator import Paginator
 from django.shortcuts import render,get_object_or_404
 from blog.models import Article, Categories
 
 
 # Create your views here.
-def home(request,page=1):
-    articles_list = Article.objects.filter(Status = 'p')
-    paginator = Paginator(articles_list, 5)
-    context = {
-        "articles": paginator.get_page(page)
-    }
-    return render(request, 'home.html', context)
+# def home(request,page=1):
+#     articles_list = Article.objects.filter(Status = 'p')
+#     paginator = Paginator(articles_list, 5)
+#     context = {
+#         "articles": paginator.get_page(page)
+#     }
+#     return render(request, 'home.html', context)
+class ArticlesLists(ListView):
+    queryset = Article.objects.published()
+    context_object_name = 'articles'
+    template_name = 'home.html'
+    paginate_by = 5
+
 
 
 def article_exclusive(request, Slug):
