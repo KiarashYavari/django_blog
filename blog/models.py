@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.html import format_html
 from extensions.persian_datetime import persian_calender_datetime
 
 
@@ -54,4 +55,8 @@ class Article(models.Model):
     
     def enabled_categories(self):
         return self.Category.filter(Status=True)
+    
+    def thumbnail_tag(self):
+        return format_html("<img src={} width= 100  height = 80  style = 'border-radius: 5px;'  >".format(self.Thumbnail.url))
+    thumbnail_tag.short_description = "عکس"
     

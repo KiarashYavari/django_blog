@@ -37,7 +37,7 @@ admin.site.register(Categories, CategoriesAdmin)
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('Title', 'Category_str','Slug', 'publish_time', 'Status')
+    list_display = ('Title', 'thumbnail_tag', 'Category_str','Slug', 'publish_time', 'Status')
     list_filter = ('Published', 'Status' ,'Category')
     search_fields = ('Title', 'Description')
     prepopulated_fields = {"Slug": ("Title",)}
