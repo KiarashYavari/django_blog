@@ -1,5 +1,5 @@
-<ul class="navbar-nav ms-auto py-4 py-lg-0 dropdown" >
-    <li class="nav-item glyphicon glyphicon-chevron-down iconsize">
+<ul class="navbar-nav ms-auto py-4 py-lg-0 dropdown " >
+    <li class="nav-item glyphicon glyphicon-chevron-down iconsize nav-link px-lg-3 py-3 py-lg-4">
         {% for cat in cat.children.all %}
             <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:category' cat.Slug %}">{{cat.Title}}</a>
             {% if cat.children.all %}
