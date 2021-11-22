@@ -1,58 +1,10 @@
-
-{% extends 'base.html' %}
-{% load static %}
-{% block title %}کیارش یاوری{% endblock %}
-<!-- Page Header-->
-{% block header %}
- <header class="masthead" style="background-image: url('{% static 'blog/assets/img/home-bg.jpg' %}')">
-            <div class="container position-relative px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <div class="site-heading">
-                            <h1>خوش آمدید</h1>
-                            <span class="subheading"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
- </header>
- {% endblock%}
-{% block main_content%}
- <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <h3 class="alert alert-primary text-center"> دسته بندی: {{category.Title}}</h3>
-                    {% for article in object_list %} 
-                        <!-- Post preview-->
-                        <div class="post-preview">
-                            <a href="{% url 'blog:ArticleDetail' article.Slug %}">
-                                <h2 class="post-title">{{article.Title}}</h2>
-                                <h3 class="post-subtitle">{{article.Description|truncatewords:30}}</h3>
-                            </a>
-                            <p class="post-meta">
-                                نوشته شده توسط
-                                <a href="#!">کیارش یاوری</a>
-                                {{article.publish_time}}
-                                <p class="post-meta">
-                                {% for cat in article.Category.all %}
-                                <a href="{% url 'blog:category' cat.Slug %}">#{{cat.Title}}</a>
-                                {% endfor%}
-                            </p>
-                            <!-- Divider-->
-                            <hr class="my-4" />
-                    {% endfor %}
-                     <!-- Pager-->
-                     {% if is_paginated %}
-                        <div class="clearfix pager-button mb-4">
-                            {% if page_obj.has_previous %}
-                                <a class="btn btn-primary text-uppercase ml-3" href="{% url 'blog:category' category.Slug page_obj.previous_page_number %}">پست های جدیدتر &larr;</a>
-                            {% endif %}
-                            {% if page_obj.has_next %}
-                            <a class="btn btn-primary text-uppercase" href="{% url 'blog:category' category.Slug page_obj.next_page_number %}">پست های قدیمی تر &rarr;</a>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-    </div>
+{% extends 'lists.html' %}
+{% block category_title%}
+    <h3 class="alert alert-primary text-center"> دسته بندی: {{category.Title}}</h3>
+{% endblock %}
+{% block previous_page_url %}
+    {% url 'blog:category' category.Slug page_obj.previous_page_number %}
+{% endblock%}
+{% block next_page_url %}
+    {% url 'blog:category' category.Slug page_obj.next_page_number %}
 {% endblock %}

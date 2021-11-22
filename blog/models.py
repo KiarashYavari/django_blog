@@ -9,6 +9,11 @@ class ArticleManager(models.Manager):
     def published(self):
         return self.filter(Status='p')
 
+# published category manager
+class CategoryManager(models.Manager):
+    def published(self):
+        return self.filter(Status=True)
+
 class Categories(models.Model):
     Title = models.CharField(max_length=200, verbose_name="عنوان دسته بندی")
     Slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس مخصوص دسته بندی")
@@ -21,6 +26,8 @@ class Categories(models.Model):
         ordering = ["Parent__id","Position"]
     def __str__(self):
         return self.Title
+
+    objects = CategoryManager() # change the default manager to custom one
     
 
 class Article(models.Model):
@@ -49,12 +56,11 @@ class Article(models.Model):
     def __str__(self):
         return self.Title
     
+    
     def publish_time(self):
         return persian_calender_datetime(self.Published)
     publish_time.short_description = "زمان انتشار"
-    
-    def enabled_categories(self):
-        return self.Category.filter(Status=True)
+
     
     def thumbnail_tag(self):
         return format_html("<img src={} width= 100  height = 80  style = 'border-radius: 5px;'  >".format(self.Thumbnail.url))

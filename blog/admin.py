@@ -45,7 +45,7 @@ class ArticleAdmin(admin.ModelAdmin):
     actions = [make_published, make_draft]
     
     def Category_str(self,cat_obj):
-        return "، ".join([Category.Title for Category in cat_obj.enabled_categories()])
+        return "، ".join([Category.Title for Category in cat_obj.Category.published()])
     Category_str.short_description = "دسته بندی ها"
     
         

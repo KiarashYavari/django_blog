@@ -15,7 +15,7 @@ from blog.models import Article, Categories
 class ArticlesLists(ListView):
     queryset = Article.objects.published()
     context_object_name = 'articles'
-    template_name = 'home.html'
+    template_name = 'articles_lists.html'
     paginate_by = 5
 
 
