@@ -32,7 +32,7 @@
                             </a>
                             <p class="post-meta">
                                 نوشته شده توسط
-                                <a href="#!">کیارش یاوری</a>
+                                <a href="{% url 'blog:author' article.Author %}">{{article.Author.get_full_name}}</a>
                                 {{article.publish_time}}
                                 <p class="post-meta">
                                 {% for cat in article.Category.published %}

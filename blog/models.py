@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.html import format_html
 from extensions.persian_datetime import persian_calender_datetime
@@ -38,6 +39,7 @@ class Article(models.Model):
     
     Title = models.CharField(max_length=200, verbose_name="عنوان")
     Category = models.ManyToManyField(Categories, verbose_name="دسته بندی", related_name= 'articles')
+    Author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='articles', verbose_name='نویسنده')
     Description = models.TextField(verbose_name="شرح")
     Slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس مخصوص مقاله")
     Thumbnail = models.ImageField(upload_to="images", verbose_name="تصویر مقاله")

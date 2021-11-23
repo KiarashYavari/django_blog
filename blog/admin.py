@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.utils import timezone
 from blog.models import Article, Categories
 from django.utils.translation import ngettext
 from django.contrib import messages
@@ -37,8 +36,8 @@ admin.site.register(Categories, CategoriesAdmin)
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('Title', 'thumbnail_tag', 'Category_str','Slug', 'publish_time', 'Status')
-    list_filter = ('Published', 'Status' ,'Category')
+    list_display = ('Title', 'thumbnail_tag', 'Author', 'Category_str','Slug', 'publish_time', 'Status')
+    list_filter = ('Published', 'Status' ,'Category', 'Author')
     search_fields = ('Title', 'Description')
     prepopulated_fields = {"Slug": ("Title",)}
     ordering = ('-Status', '-Published')
