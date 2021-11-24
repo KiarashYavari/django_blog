@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import get_object_or_404
 from blog.models import Article, Categories
 
 
@@ -9,13 +9,13 @@ from blog.models import Article, Categories
 class ArticlesLists(ListView):
     queryset = Article.objects.published()
     context_object_name = 'articles'
-    template_name = 'articles_lists.html'
+    template_name = 'blog/articles_lists.html'
     paginate_by = 5
 
 
 
 class ArticleDetail(DetailView):
-    template_name = 'article_detail.html'
+    template_name = 'blog/article_detail.html'
 
     def get_object(self):
         Slug = self.kwargs.get('Slug')
@@ -24,7 +24,7 @@ class ArticleDetail(DetailView):
 
 class CategoryList(ListView):
     paginate_by = 5
-    template_name = 'category_list.html'
+    template_name = 'blog/category_list.html'
 
     def get_queryset(self):  # get category object and return articles categorize by that category
         global category
@@ -41,7 +41,7 @@ class CategoryList(ListView):
 
 class AuthorList(ListView):
     paginate_by = 5
-    template_name = 'author_list.html'
+    template_name = 'blog/author_list.html'
 
     def get_queryset(self):  # get author object and return articles grouped by that author
         username = self.kwargs.get('username')

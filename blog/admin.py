@@ -24,6 +24,11 @@ def make_draft(modeladmin, request, queryset):
             updated,
         ) % updated, messages.SUCCESS)
 
+
+
+admin.site.site_header = "پنل مدیریت وبلاگ"
+
+
 class CategoriesAdmin(admin.ModelAdmin):
     list_display = ('Position','Title', 'Slug', 'Parent','Status')
     list_filter = (['Status'])
