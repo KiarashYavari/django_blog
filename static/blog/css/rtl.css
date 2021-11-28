@@ -1,22 +1,32 @@
-@font-face {
-    font-family: 'B Nazanin';
-    src: local(''),
-    local('B Nazanin'),
-    url('http://awebfont.ir/services/fonts/775b712c01cdf4eb7f15d9180567345060f700291901931.woff') format('woff');
-font-weight: normal;
-font-style: normal;
-}
+@import url(http://awebfont.ir/css?id=1069);
 
 body{
     direction: rtl;
     text-align: right;
-    font-family: 'B Nazanin', tahoma, Arial;
+    font-family: 'B Nazanin', tahoma, Arial !important;
+    font-size: larger !important;
+    font-weight: bolder !important;
 }
 
 #mainNav .navbar-toggler {
     text-align: right;
     direction: ltr;
 }
+
+#mainNav .navbar-brand {
+  font-size: xx-large;
+}
+
+header.masthead .site-heading h1, header.masthead .site-heading .h1 {
+  font-size: 3.5rem;
+}
+
+
+#mainNav .navbar-nav > li.nav-item > a.nav-link {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
 
 header.masthead{
     background-size: 100% 100%;
@@ -100,9 +110,9 @@ header.masthead .site-heading .h1 {
   position: absolute;
   display: none;
   width: 200px;
-  background: rgba(0, 0, 0, 0.171);
+  background: rgba(0, 0, 0, 0.637) !important;
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.637);
-  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.726);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.637);
   -ms-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.637);
   -o-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.637);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.637);
@@ -125,13 +135,13 @@ header.masthead .site-heading .h1 {
 .nav-xbootstrap li ul.dropdown li:last-child a { border-bottom: none; }
 
 .nav-xbootstrap li:hover a {
-  background: rgba(0, 0, 0, 0.493);
+  background: rgba(0, 0, 0, 0.637) !important;
   color: #fff !important;
 }
 
 .nav-xbootstrap li:first-child:hover a { border-radius: 3px 0 0 3px; }
 
-.nav-xbootstrap li ul.dropdown li:hover a { background: rgba(0, 0, 0, 0.685); }
+.nav-xbootstrap li ul.dropdown li:hover a { background: rgba(0, 0, 0, 0.637); }
 
 .nav-xbootstrap li ul.dropdown li:first-child:hover a { border-radius: 0; }
 
@@ -240,7 +250,7 @@ header.masthead .site-heading .h1 {
 
 .nav-xbootstrap li a {
   display: block;
-  color: #00000065;
+  color: rgba(0, 0, 0, 0.637);
   font-weight: 600;
 }
 
@@ -249,18 +259,18 @@ header.masthead .site-heading .h1 {
 .nav-xbootstrap li ul.dropdown { position: relative; }
 
 .nav-xbootstrap li ul.dropdown li a {
-  background: rgba(0, 0, 0, 0.301) !important;
+  background: (0, 0, 0, 0.527) !important;
   border-bottom: none;
   color: #fff !important;
 }
 
 .nav-xbootstrap li:hover a {
-  background: rgba(0, 0, 0, 0.589);
+  background: rgba(0, 0, 0, 0.637);
   color: #fff !important;
 }
 
 .nav-xbootstrap li ul.dropdown li:hover a {
-  background: rgba(0, 0, 0, 0.527); !important;
+  background: rgba(0, 0, 0, 0.637) !important;
   color: #fff !important;
 }
 
@@ -276,7 +286,7 @@ header.masthead .site-heading .h1 {
 }
 
 .cover-bg {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.637);
   position: fixed;
   top: 0;
   bottom: 0;
