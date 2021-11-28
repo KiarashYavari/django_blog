@@ -1,0 +1,19 @@
+div {
+    direction: rtl;
+}
+
+body{
+    direction: rtl;
+    text-align: right;
+}
+
+.container-login100-form-btn {
+    margin-right: 7.3vw;
+}
+#error_msg{
+    background-color: rgba(255, 162, 162, 0.856);
+    color:red;
+    padding: 0.5vw 0.9vw 0.5vw 0.5vw;
+    font-size: large;
+    font-weight: bolder;
+}

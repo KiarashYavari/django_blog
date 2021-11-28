@@ -1,4 +1,6 @@
 {% load static %}
+{% load widget_tweaks %}
+<html lang="fa">
 <head>
 	<title>حساب کاربری</title>
 	<meta charset="UTF-8">
@@ -24,30 +26,52 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'registration/Login/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'registration/Login/css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'registration/Login/css/rtl.css' %}">
 <!--===============================================================================================-->
 </head>
 <body>
 	
 	<div class="limiter">
+		<div class="errors">
+		{% if form.non_field_errors %}
+			{% for errors in form.non_field_errors %}
+				<div id="error_msg"> {{errors}} </div>
+			{% endfor %}
+		{% endif %}
+		</div>
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image:  url({% static 'registration/Login/images/bg-01.jpg' %});">
 					<span class="login100-form-title-1">
 						ورود به حساب کاربری
 					</span>
-				</div>
+			</div>
 
 				<form class="login100-form validate-form" method="Post">{% csrf_token %}
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+					<div class="wrap-input100 validate-input m-b-26" data-validate="این فیلد را پر کنید!">
 						<span class="label-input100">نام کاربری</span>
-						{{form.username}}
+							{{form.username|attr:"class:input100"|attr:"placeholder:نام کاربری"}}
 						<span class="focus-input100"></span>
+							<div class="errors">
+								{% if form.username.errors %}
+									{% for error in form.username.errors %}
+										<div id="error_msg"> {{error}} </div>
+									{% endfor %}
+								{% endif %}
+							</div>
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+					<div class="wrap-input100 validate-input m-b-18" data-validate = "این فیلد را پر کنید!">
 						<span class="label-input100">رمز عبور</span>
-						{{form.password}}
+							{{form.password|attr:"class:input100"|attr:"placeholder:رمزعبور"}}
 						<span class="focus-input100"></span>
+							<div class="errors">
+								{% if form.password.errors %}
+									{% for error in form.password.errors %}
+										<div id="error_msg"> {{error}} </div>
+									{% endfor %}
+								{% endif %}
+							</div>
 					</div>
 
 					{% comment %} <div class="flex-sb-m w-full p-b-30">
@@ -93,3 +117,4 @@
 	<script src="{% static 'registration/Login/js/main.js' %}"></script>
 
 </body>
+</html>
