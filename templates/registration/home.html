@@ -1,2 +1,7 @@
-hello world!
-{{user.get_full_name}}
+{% extends 'registration/base.html' %}
+{% block title%}
+    <title>پنل مدیریت وبلاگ</title>
+{% endblock %}
+{% block main_sidebar %}
+    {% include 'registration/sidebar.html' %}
+{%endblock%}
