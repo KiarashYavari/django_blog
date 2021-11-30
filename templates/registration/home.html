@@ -1,7 +1,11 @@
 {% extends 'registration/base.html' %}
-{% block title%}
-    <title>پنل مدیریت وبلاگ</title>
-{% endblock %}
+
+{%block page_title%}
+    <h1 class="m-0 text-dark">لیست مقالات</h1>
+{%endblock%}
+{%block main_content%}
+    خوش آمدید {{user.get_full_name}}     
+{%endblock%}
 {% block main_sidebar %}
     {% include 'registration/sidebar.html' %}
 {%endblock%}
