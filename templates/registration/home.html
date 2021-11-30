@@ -4,7 +4,50 @@
     <h1 class="m-0 text-dark">لیست مقالات</h1>
 {%endblock%}
 {%block main_content%}
-    خوش آمدید {{user.get_full_name}}     
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>عنوان مقاله</th>
+                <th>تصویر بند انگشتی</th>
+                <th>نویسنده مقاله</th>
+                <th>دسته بندی</th>
+                <th>خلاصه مقاله</th>
+                <th>تاریخ انتشار</th>
+                <th>وضعیت انتشار</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for article in object_list %}
+                <tr>
+                    <td>{{article.Title}}</td>
+                    <td>{{article.thumbnail_tag}}</td>
+                    <td>{{article.Author.get_full_name}}</td>
+                    <td>{{article.Category_str}}</td>
+                    <td>{{article.Description|truncatewords:"25"}}</td>
+                    <td>{{article.publish_time}}</td>
+                    <td>
+                        {% if article.Status == 'p' %}
+                            <span class="badge bg-success"><a href="{% url 'blog:ArticleDetail' article.Slug %}">منتشر شده</a></span>
+                        {% else %}
+                        <span class="badge bg-danger">پیش نویس</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {%endfor%}
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+  </div>   
 {%endblock%}
 {% block main_sidebar %}
     {% include 'registration/sidebar.html' %}

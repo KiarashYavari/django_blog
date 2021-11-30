@@ -43,10 +43,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{% url 'account:home'%}" class="nav-link">صفحه اصلی</a>
+        <a href="{% url 'account:home'%}" target="_blank" class="nav-link">صفحه اصلی</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{%url 'blog:home'%}" class="nav-link">نمایش سایت</a>
+        <a href="{%url 'blog:home'%}" target="_blank" class="nav-link">نمایش سایت</a>
       </li>
     </ul>
 
@@ -90,11 +90,14 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        
+        {%block main_content%}
+
+        {%endblock%}
          <div class="row">
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
+            
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
@@ -107,9 +110,7 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="row col-lg-3 col-6">
-          {%block main_content%}
-
-          {%endblock%}
+          
         </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->

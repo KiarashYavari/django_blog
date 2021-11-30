@@ -5,5 +5,9 @@ from blog.models import Article
 
 # Create your views here.
 class ArticlesList(LoginRequiredMixin,ListView):
-    queryset = Article.objects.all
     template_name = "registration/home.html"
+    def get_queryset(self):
+        if self.request.user.is_superuser:
+            return Article.objects.all
+        else:
+            return Article.objects.filter(Author=self.request.user)
