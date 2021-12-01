@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.urls import reverse
 from django.utils.html import format_html
 from extensions.persian_datetime import persian_calender_datetime
 
@@ -72,4 +73,8 @@ class Article(models.Model):
     def Category_str(self):
         return "، ".join([Category.Title for Category in self.Category.published()])
     Category_str.short_description = "دسته بندی ها"
+
+
+    def get_absolute_url(self):
+        return reverse("account:home")
     
