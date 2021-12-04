@@ -4,7 +4,7 @@ from django.utils import timezone
     
 # Create your models here.
 class User(AbstractUser):
-    Is_Author = models.BooleanField(default=False)
+    Is_Author = models.BooleanField(default=False, verbose_name="وضعیت نویسندگی")
     Special_User = models.DateTimeField(default=timezone.now())
 
 
@@ -13,3 +13,5 @@ class User(AbstractUser):
             return True
         else:
             return False
+    is_special_user.boolean = True
+    is_special_user.short_description = "عضویت کاربر ویژه"
