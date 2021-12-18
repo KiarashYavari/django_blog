@@ -41,7 +41,10 @@
                         {% if article.Status == 'p' %}
                             <span class="badge bg-success"><a href="{% url 'blog:ArticleDetail' article.Slug %}">منتشر شده</a></span>
                         {% else %}
-                        <span class="badge bg-danger">پیش نویس</span>
+                        <span class="badge badge-dark">پیش نویس</span>
+                        {% endif %}
+                        {% if user.is_superuser %}
+                          <span class="badge badge-danger"><a  style="color:white;"  href="{% url 'account:article_delete' article.pk %}">حذف</a></span>
                         {% endif %}
                     </td>
                 </tr>

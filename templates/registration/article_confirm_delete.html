@@ -1,0 +1,28 @@
+{% extends 'registration/base.html' %}
+
+{%block page_title%}
+    <h1 class="m-0 text-dark">لیست مقالات</h1>
+{%endblock%}
+{%block main_content%}
+<div class="row">
+    <div class="col-8 mx-auto">
+            <form method="post">{% csrf_token %}
+                <div class="alert alert-warning alert-dismissible">
+                    <h5><i class="icon fas fa-exclamation-triangle"></i> هشدار!</h5>
+                    <h4 style="font-weight:bold important!;">
+                    آیا از حذف مقاله ی « {{object}}» از « {{object.Author.get_full_name}}» اطمینان دارید؟
+                    </h4>
+                    {{ form }}
+                    <div class="mt-3 p-1 mx-auto">
+                    <input type="submit" class="btn btn-success mx-auto" value="تأیید" >
+                    </div>
+                </div>
+            </form>
+        <!-- /.card-body -->
+      <!-- /.card -->
+    </div>
+  </div>   
+{%endblock%}
+{% block main_sidebar %}
+    {% include 'registration/sidebar.html' %}
+{%endblock%}
