@@ -1,5 +1,6 @@
 {% load static %}
 {% block main_sidebar %}
+{% load account_tags %}
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
@@ -35,16 +36,10 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{% url 'account:home' %}" class="nav-link active">
-                  <i class="fa fa-list nav-icon"></i>
-                  <p>لیست مقالات</p>
-                </a>
+                {% active_navbar request 'home' 'لیست مقالات' %}
               </li>
               <li class="nav-item">
-                <a href="{% url 'account:article_create' %}" class="nav-link">
-                  <i class="far fa-edit nav-icon"></i>
-                  <p>افزودن مقاله</p>
-                </a>
+                {% active_navbar request 'article_create' 'افزودن مقاله' %}
               </li>
               {% comment %} <li class="nav-item">
                 <a href="./index3.html" class="nav-link">
