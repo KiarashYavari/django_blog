@@ -58,6 +58,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'market.urls'
 LOGIN_REDIRECT_URL = "account:home"
+LOGOUT_REDIRECT_URL = "account:login"
 LOGIN_URL = "account:login"
 AUTH_USER_MODEL = "account.User"
 
