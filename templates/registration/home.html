@@ -27,7 +27,7 @@
               {% for article in object_list %}
                   <tr>
                       <td>
-                        {% if article.Status == 'd' or user.is_superuser %}
+                        {% if article.Status in "bd"|make_list or user.is_superuser %}
                           <a href="{% url 'account:article_update' article.pk %}">{{article.Title}}</a>
                         {% else %}
                           {{article.Title}}
@@ -41,9 +41,18 @@
                       <td>
                           {% if article.Status == 'p' %}
                               <span class="badge bg-success"><a href="{% url 'blog:ArticleDetail' article.Slug %}">منتشر شده</a></span>
-                          {% else %}
-                          <span class="badge badge-dark">پیش نویس</span>
-                          <span class="badge badge-secondary"><a style="color:white;" href="{% url 'blog:ArticlePreview' article.pk %}">پیش نمایش</a></span>
+                          {% elif article.Status in "bd"|make_list %}
+                            <span class="badge badge-secondary"><a style="color:white;" href="{% url 'blog:ArticlePreview' article.pk %}">پیش نمایش</a></span>
+                            {%if article.Status == 'd' %}
+                              <span class="badge badge-dark">پیش نویس</span>
+                            {% else %}
+                              <span class="badge badge-warning">برگشت خورده</span>
+                            {%endif%}
+                          {% elif article.Status == 'i' %}
+                            <span class="badge badge-primary">درحال بررسی</span>
+                            {% if user.is_superuser %}
+                              <span class="badge badge-secondary"><a style="color:white;" href="{% url 'blog:ArticlePreview' article.pk %}">پیش نمایش</a></span>
+                            {%endif%}
                           {% endif %}
                           {% if user.is_superuser %}
                             <span class="badge badge-danger"><a  style="color:white;"  href="{% url 'account:article_delete' article.pk %}">حذف</a></span>
