@@ -20,6 +20,7 @@
                   <th>دسته بندی</th>
                   <th>خلاصه مقاله</th>
                   <th>تاریخ انتشار</th>
+                  <th>مقاله ویژه</th>
                   <th>وضعیت انتشار</th>
                 </tr>
               </thead>
@@ -38,6 +39,13 @@
                       <td>{{article.Category_str}}</td>
                       <td>{{article.Description|striptags|truncatewords:"25"}}</td>
                       <td>{{article.publish_time}}</td>
+                      <td>
+                        {% if article.is_special %}
+                          <i class="fa fa-check-circle" style="color:green;"></i>
+                        {% else %}
+                          <i class="fa fa-minus-square" style="color:red;"></i>
+                        {% endif %}
+                      </td>
                       <td>
                           {% if article.Status == 'p' %}
                               <span class="badge bg-success"><a href="{% url 'blog:ArticleDetail' article.Slug %}">منتشر شده</a></span>

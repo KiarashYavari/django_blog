@@ -8,9 +8,9 @@ class FieldAccessMixin():
     """Verify that the current user is authenticated."""
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_superuser:
-            self.fields = ['Title', 'Category', 'Author', 'Description', 'Slug', 'Thumbnail', 'Published', 'Status']
+            self.fields = ['Title', 'Category', 'Author', 'Description', 'Slug', 'Thumbnail', 'Published', 'is_special', 'Status']
         elif request.user.Is_Author:
-            self.fields = ['Title', 'Category', 'Description', 'Slug', 'Thumbnail', 'Published']
+            self.fields = ['Title', 'Category', 'Description', 'Slug', 'Thumbnail', 'is_special', 'Published']
         else:
             raise Http404("شما مجاز به مشاهده این صفحه نیستید")
         

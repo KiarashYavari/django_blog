@@ -50,6 +50,7 @@ class Article(models.Model):
     Created = models.DateTimeField(auto_now_add=True, verbose_name="ساخته شده در")
     Updated = models.DateTimeField(auto_now=True, verbose_name="آخرین بروز رسانی در")
     Status = models.CharField(max_length= 1, choices=STATUS_CHOICES, verbose_name="وضعیت انتشار")
+    is_special = models.BooleanField(default=0, verbose_name="مقاله ویژه")
     
     objects = ArticleManager() # change the default manager to custom one
     class Meta:

@@ -30,7 +30,7 @@ admin.site.site_header = "پنل مدیریت وبلاگ"
 
 
 class CategoriesAdmin(admin.ModelAdmin):
-    list_display = ('Position','Title', 'Slug', 'Parent','Status')
+    list_display = ('Position','Title', 'Slug', 'Parent', 'Status')
     list_filter = (['Status'])
     search_fields = ('Title', 'Slug')
     prepopulated_fields = {"Slug": ("Title",)}
@@ -41,7 +41,7 @@ admin.site.register(Categories, CategoriesAdmin)
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('Title', 'thumbnail_tag', 'Author', 'Category_str','Slug', 'publish_time', 'Status')
+    list_display = ('Title', 'thumbnail_tag', 'Author', 'Category_str','Slug', 'publish_time', 'is_special', 'Status')
     list_filter = ('Published', 'Status' ,'Category', 'Author')
     search_fields = ('Title', 'Description')
     prepopulated_fields = {"Slug": ("Title",)}
