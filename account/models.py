@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
@@ -5,7 +6,7 @@ from django.utils import timezone
 # Create your models here.
 class User(AbstractUser):
     Is_Author = models.BooleanField(default=False, verbose_name="وضعیت نویسندگی")
-    Special_User = models.DateTimeField(default=timezone.now())
+    Special_User = models.DateTimeField(default=timezone.now(), verbose_name="کاربر ویژه")
 
 
     def is_special_user(self):

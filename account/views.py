@@ -3,6 +3,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .mixins import FieldAccessMixin, FormValidMixin, UserAccessMixin, SuperUserAccessMixin
 from blog.models import Article
+from .models import User
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -29,3 +30,13 @@ class ArticleDelete(SuperUserAccessMixin, DeleteView):
     model = Article
     success_url = reverse_lazy('account:home')
     template_name = 'registration/article_confirm_delete.html'
+
+
+class UserProfile(UpdateView):
+    model = User
+    template_name = "registration/profile.html"
+    fields = ['first_name', 'last_name', 'username', 'Is_Author', 'Special_User']
+    success_url = reverse_lazy("account:profile")
+
+    def get_object(self):
+        return User.objects.get(pk=self.request.user.pk)
