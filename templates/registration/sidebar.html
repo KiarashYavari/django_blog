@@ -36,10 +36,10 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                {% active_navbar request 'home' 'لیست مقالات' %}
+                {% active_navbar request 'home' 'fa-list' 'لیست مقالات' %}
               </li>
               <li class="nav-item">
-                {% active_navbar request 'article_create' 'افزودن مقاله' %}
+                {% active_navbar request 'article_create' 'fa-edit' 'افزودن مقاله' %}
               </li>
               {% comment %} <li class="nav-item">
                 <a href="./index3.html" class="nav-link">
@@ -49,14 +49,8 @@
               </li> {% endcomment %}
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="{% url 'account:profile' %}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                پروفایل
-                <span class="right badge badge-danger">جدید</span>
-              </p>
-            </a>
+          <li class="nav-item"> 
+            {% active_navbar request 'article_create' 'fas fa-th' 'پروفایل' %}
           </li>
           {% comment %} <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

@@ -2,6 +2,6 @@
 {% if request.resolver_match.url_name == link_name %}
     active
 {%endif%}">
-    <i class="fa {% if link_name == 'home' %}fa-list{%else%}fa-edit{%endif%} nav-icon"></i>
+    <i class="fa {{icon_classes}} nav-icon"></i>
     <p>{{content}}</p>
 </a>
