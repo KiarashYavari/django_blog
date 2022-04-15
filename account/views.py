@@ -6,6 +6,7 @@ from blog.models import Article
 from .models import User
 from .forms import ProfileForm
 from django.urls import reverse_lazy
+from django.contrib.auth.views import LoginView
 
 # Create your views here.
 class ArticlesList(LoginRequiredMixin,ListView):
@@ -33,7 +34,7 @@ class ArticleDelete(SuperUserAccessMixin, DeleteView):
     template_name = 'registration/article_confirm_delete.html'
 
 
-class UserProfile(UpdateView):
+class UserProfile(LoginRequiredMixin,UpdateView):
     model = User
     template_name = "registration/profile.html"
     form_class = ProfileForm
@@ -50,3 +51,13 @@ class UserProfile(UpdateView):
             'user': self.request.user,
         })
         return kwargs
+
+
+
+class Login(LoginView):
+    def get_success_url(self):
+        user = self.request.user
+        if user.is_superuser or user.Is_Author:
+            return reverse_lazy("account:home")
+        else:
+            return reverse_lazy("account:profile")
